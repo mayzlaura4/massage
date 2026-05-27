@@ -105,6 +105,8 @@
   }
   .nav-cta::after{display:none}
   .nav-cta:hover{background:var(--yellow);color:var(--wine-deep)!important}
+  .nav-phone{color:var(--cream-dim)}
+  .nav-phone:hover{color:var(--cream)}
   .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
   .burger span{width:26px;height:2px;background:var(--yellow);transition:.3s}
 
@@ -263,13 +265,13 @@
     background:linear-gradient(155deg,var(--wine-deep),#2c1019);
     border:1px solid rgba(232,222,99,.18);
     border-radius:30px;padding:clamp(40px,6vw,72px);
-    display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;
+    max-width:680px;margin:0 auto;text-align:center;
     box-shadow:0 40px 90px -35px rgba(0,0,0,.8);
   }
   .contact-card h2{font-size:clamp(2rem,4.5vw,3.2rem);color:var(--cream);margin-bottom:18px}
   .contact-card h2 em{color:var(--yellow);font-style:italic}
-  .contact-card p{color:var(--cream-dim);font-weight:300;margin-bottom:30px}
-  .info-list{list-style:none;display:flex;flex-direction:column;gap:20px}
+  .contact-card p{color:var(--cream-dim);font-weight:300;margin-bottom:30px;max-width:42ch;margin-left:auto;margin-right:auto}
+  .info-list{list-style:none;display:inline-flex;flex-direction:column;gap:20px;text-align:left;margin:0 auto}
   .info-list li{display:flex;align-items:center;gap:16px;font-size:1.02rem}
   .info-list .ic{
     width:46px;height:46px;flex:none;border-radius:50%;display:grid;place-items:center;
@@ -280,21 +282,6 @@
   .info-list a:hover,.info-list span{color:var(--cream)}
   .info-list a{transition:color .25s}
   .info-list a:hover{color:var(--yellow)}
-
-  /* FORM */
-  .form-fields{display:flex;flex-direction:column;gap:16px}
-  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .form-fields label{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dim);display:block;margin-bottom:7px}
-  .form-fields input,.form-fields select,.form-fields textarea{
-    width:100%;padding:13px 16px;border-radius:12px;
-    background:rgba(247,241,230,.05);border:1px solid rgba(247,241,230,.15);
-    color:var(--cream);font-family:inherit;font-size:.95rem;transition:border-color .25s,background .25s;
-  }
-  .form-fields input::placeholder,.form-fields textarea::placeholder{color:rgba(247,241,230,.4)}
-  .form-fields input:focus,.form-fields select:focus,.form-fields textarea:focus{outline:none;border-color:var(--yellow);background:rgba(247,241,230,.08)}
-  .form-fields select option{background:var(--wine-deep)}
-  .form-note{font-size:.78rem;color:var(--cream-dim);margin-top:4px}
-  .form-fields .btn-primary{margin-top:6px;justify-content:center}
 
   /* FOOTER */
   footer{background:var(--wine-deep);padding:50px 0 36px;border-top:1px solid rgba(232,222,99,.1)}
@@ -319,11 +306,11 @@
     .about-art{max-width:380px;margin:0 auto;width:100%}
     .svc-grid{grid-template-columns:1fr}
     .steps{grid-template-columns:1fr;gap:36px}
-    .contact-card{grid-template-columns:1fr;gap:40px}
   }
   @media(max-width:540px){
-    .field-row{grid-template-columns:1fr}
     .foot-grid{flex-direction:column;text-align:center}
+  @media(max-width:420px){
+    .brand small{display:none}
   }
 </style>
 </head>
@@ -334,9 +321,7 @@
 <nav id="nav">
   <div class="brand">Zenergy<small>Bodywork · Laylou</small></div>
   <div class="nav-links" id="navlinks">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#how">How It Works</a>
+    <a href="tel:+12365175551" class="nav-phone">236 517-5551</a>
     <a href="#contact" class="nav-cta">Book a Session</a>
   </div>
   <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -358,7 +343,6 @@
       <p class="hero-sub reveal">Cranio sacral, deep tissue, Swedish &amp; Reiki — thoughtful, intuitive sessions brought directly to your door.</p>
       <div class="hero-cta-row reveal">
         <a href="#contact" class="btn btn-primary">Book a Session →</a>
-        <a href="#services" class="btn btn-ghost">Explore Modalities</a>
       </div>
     </div>
     <div class="hero-art reveal">
@@ -465,7 +449,8 @@
     <div class="contact-card reveal">
       <div class="contact-info">
         <h2>Let's make some <em>room to breathe.</em></h2>
-        <p>Booking is simple and personal — reach out by phone or email, or send a few details below and I'll get back to you to set things up.</p>
+        <p>Book by contacting me below — reach out any way that's easiest and I'll get you set up with a time that works.</p>
+
         <ul class="info-list">
           <li>
             <span class="ic"><svg viewBox="0 0 24 24"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
@@ -484,28 +469,6 @@
             <span><small>Online</small><a href="https://www.zenergymassage.ca">www.zenergymassage.ca</a></span>
           </li>
         </ul>
-      </div>
-
-      <div class="contact-form">
-        <div class="form-fields">
-          <div class="field-row">
-            <div><label for="name">Name</label><input id="name" type="text" placeholder="Your name"></div>
-            <div><label for="phone">Phone</label><input id="phone" type="tel" placeholder="(___) ___-____"></div>
-          </div>
-          <div><label for="email">Email</label><input id="email" type="email" placeholder="you@email.com"></div>
-          <div><label for="service">Interested in</label>
-            <select id="service">
-              <option>Cranio Sacral</option>
-              <option>Deep Tissue</option>
-              <option>Swedish Massage</option>
-              <option>Reiki</option>
-              <option>Not sure yet — help me choose</option>
-            </select>
-          </div>
-          <div><label for="msg">A little about what you're looking for</label><textarea id="msg" rows="3" placeholder="Areas of tension, goals, preferred days…"></textarea></div>
-          <button class="btn btn-primary" id="sendBtn">Send Request</button>
-          <p class="form-note" id="formNote">Prefer to talk? Call or text <a href="tel:+12365175551" style="color:var(--yellow)">236 517-5551</a>.</p>
-        </div>
       </div>
     </div>
   </div>
@@ -546,28 +509,6 @@
   // Stagger hero on load
   window.addEventListener('load',()=>{
     document.querySelectorAll('header .reveal').forEach((el,i)=>setTimeout(()=>el.classList.add('in'),120+i*120));
-  });
-
-  // Friendly form handler (front-end demo — wires to email)
-  document.getElementById('sendBtn').addEventListener('click',()=>{
-    const name=document.getElementById('name').value.trim();
-    const email=document.getElementById('email').value.trim();
-    const phone=document.getElementById('phone').value.trim();
-    const service=document.getElementById('service').value;
-    const msg=document.getElementById('msg').value.trim();
-    const note=document.getElementById('formNote');
-    if(!name||(!email&&!phone)){
-      note.innerHTML='Please add your name and a way to reach you (email or phone).';
-      note.style.color='var(--yellow-soft)';
-      return;
-    }
-    const subject=encodeURIComponent('Booking request — '+service+' ('+name+')');
-    const body=encodeURIComponent(
-      'Name: '+name+'\nEmail: '+email+'\nPhone: '+phone+'\nInterested in: '+service+'\n\n'+msg
-    );
-    window.location.href='mailto:layloubloom@gmail.com?subject='+subject+'&body='+body;
-    note.innerHTML='Opening your email app… if nothing happens, write to <a href="mailto:layloubloom@gmail.com" style="color:var(--yellow)">layloubloom@gmail.com</a>.';
-    note.style.color='var(--cream-dim)';
   });
 </script>
 </body>
